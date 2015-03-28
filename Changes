@@ -1,5 +1,9 @@
 Revision history for MooseX-Types-Common
 
+0.001013  2015-03-28 22:16:00Z
+  - better fix for fully-qualified type names, made to MooseX::Types directly
+  - whitespace is now permitted in the NumericCode type (Denis Ibaev)
+
 0.001012  2013-12-17 23:09:36Z
   - fully-qualified type names like MooseX::Types::Common::String::SimpleStr
     work again (removed in 0.001011)

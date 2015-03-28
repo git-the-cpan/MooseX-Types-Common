@@ -1,12 +1,6 @@
 package MooseX::Types::Common::Numeric;
-{
-  $MooseX::Types::Common::Numeric::VERSION = '0.001012';
-}
-BEGIN {
-  $MooseX::Types::Common::Numeric::AUTHORITY = 'cpan:GRODITI';
-}
 # ABSTRACT: Commonly used numeric types
-
+our $VERSION = '0.001013';
 use strict;
 use warnings;
 
@@ -19,6 +13,7 @@ use MooseX::Types -declare => [
 ];
 
 use MooseX::Types::Moose qw/Num Int/;
+use if MooseX::Types->VERSION >= 0.42, 'namespace::autoclean';
 
 subtype PositiveNum,
   as Num,
@@ -136,18 +131,13 @@ __END__
 
 =encoding UTF-8
 
-=for :stopwords Matt S Trout - mst (at) shadowcatsystems.co.uk
-(L<http://www.shadowcatsystems.co.uk/>) K. James Cheetham Guillermo Roditi
-Caleb Toby Inkster Tomas Doran Cushing Dave Rolsky Graham Knop Justin
-Hunter Karen Etheridge
-
 =head1 NAME
 
 MooseX::Types::Common::Numeric - Commonly used numeric types
 
 =head1 VERSION
 
-version 0.001012
+version 0.001013
 
 =head1 SYNOPSIS
 
@@ -213,7 +203,7 @@ Guillermo Roditi <groditi@gmail.com>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2013 by Matt S Trout - mst (at) shadowcatsystems.co.uk (L<http://www.shadowcatsystems.co.uk/>).
+This software is copyright (c) 2015 by Matt S Trout - mst (at) shadowcatsystems.co.uk (L<http://www.shadowcatsystems.co.uk/>).
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

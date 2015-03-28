@@ -1,12 +1,6 @@
 package MooseX::Types::Common::String;
-{
-  $MooseX::Types::Common::String::VERSION = '0.001012';
-}
-BEGIN {
-  $MooseX::Types::Common::String::AUTHORITY = 'cpan:GRODITI';
-}
 # ABSTRACT:  Commonly used string types
-
+our $VERSION = '0.001013';
 use strict;
 use warnings;
 
@@ -24,6 +18,7 @@ use MooseX::Types -declare => [
 ];
 
 use MooseX::Types::Moose qw/Str/;
+use if MooseX::Types->VERSION >= 0.42, 'namespace::autoclean';
 
 subtype SimpleStr,
   as Str,
@@ -59,7 +54,7 @@ subtype NumericCode,
 
 coerce NumericCode,
   from NonEmptySimpleStr,
-  via { my $code = $_; $code =~ s/[[:punct:]]//g; return $code };
+  via { my $code = $_; $code =~ s/[[:punct:][:space:]]//g; return $code };
 
 subtype Password,
   as NonEmptySimpleStr,
@@ -169,18 +164,13 @@ __END__
 
 =encoding UTF-8
 
-=for :stopwords Matt S Trout - mst (at) shadowcatsystems.co.uk
-(L<http://www.shadowcatsystems.co.uk/>) K. James Cheetham Guillermo Roditi
-Caleb Toby Inkster Tomas Doran Cushing Dave Rolsky Graham Knop Justin
-Hunter Karen Etheridge
-
 =head1 NAME
 
 MooseX::Types::Common::String - Commonly used string types
 
 =head1 VERSION
 
-version 0.001012
+version 0.001013
 
 =head1 SYNOPSIS
 
@@ -239,7 +229,7 @@ A coercion exists via C<uc> from C<NonEmptyStr>
 A C<Str> with no new-line characters that consists of only Numeric characters.
 Examples include, Social Security Numbers, Personal Identification Numbers, Postal Codes, HTTP Status
 Codes, etc. Supports attempting to coerce from a string that has punctuation
-in it ( e.g credit card number 4111-1111-1111-1111 ).
+or whitespaces in it ( e.g credit card number 4111-1111-1111-1111 ).
 
 =back
 
@@ -271,7 +261,7 @@ Guillermo Roditi <groditi@gmail.com>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2013 by Matt S Trout - mst (at) shadowcatsystems.co.uk (L<http://www.shadowcatsystems.co.uk/>).
+This software is copyright (c) 2015 by Matt S Trout - mst (at) shadowcatsystems.co.uk (L<http://www.shadowcatsystems.co.uk/>).
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

@@ -1,22 +1,14 @@
-package MooseX::Types::Common;
-{
-  $MooseX::Types::Common::VERSION = '0.001012';
-}
-# git description: v0.001011-2-g23ccebf
-
-BEGIN {
-  $MooseX::Types::Common::AUTHORITY = 'cpan:GRODITI';
-}
+package MooseX::Types::Common; # git description: v0.001012-15-ge054d66
 # ABSTRACT: A library of commonly used type constraints
-
+our $VERSION = '0.001013';
 use strict;
 use warnings;
-use Carp qw/cluck/;
+use Carp ();
 
 sub import {
     my $self = shift;
     return unless @_;
-    cluck("Tried to import the symbols " . join(', ', @_)
+    Carp::cluck("Tried to import the symbols " . join(', ', @_)
         . " from MooseX::Types::Common.\nDid you mean "
         . "MooseX::Types::Common::String or MooseX::Type::Common::Numeric?");
 }
@@ -29,18 +21,13 @@ __END__
 
 =encoding UTF-8
 
-=for :stopwords Matt S Trout - mst (at) shadowcatsystems.co.uk
-(L<http://www.shadowcatsystems.co.uk/>) K. James Cheetham Guillermo Roditi
-Caleb Toby Inkster Tomas Doran Cushing Dave Rolsky Graham Knop Justin
-Hunter Karen Etheridge
-
 =head1 NAME
 
 MooseX::Types::Common - A library of commonly used type constraints
 
 =head1 VERSION
 
-version 0.001012
+version 0.001013
 
 =head1 SYNOPSIS
 
@@ -102,30 +89,16 @@ Guillermo Roditi <groditi@gmail.com>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2013 by Matt S Trout - mst (at) shadowcatsystems.co.uk (L<http://www.shadowcatsystems.co.uk/>).
+This software is copyright (c) 2015 by Matt S Trout - mst (at) shadowcatsystems.co.uk (L<http://www.shadowcatsystems.co.uk/>).
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
 
 =head1 CONTRIBUTORS
 
+=for stopwords Karen Etheridge Justin Hunter Dave Rolsky Tomas Doran Graham Knop Denis Ibaev
+
 =over 4
-
-=item *
-
-Caleb Cushing <xenoterracide@gmail.com>
-
-=item *
-
-Dave Rolsky <autarch@urth.org>
-
-=item *
-
-Graham Knop <haarg@haarg.org>
-
-=item *
-
-Justin Hunter <justin.d.hunter@gmail.com>
 
 =item *
 
@@ -133,11 +106,23 @@ Karen Etheridge <ether@cpan.org>
 
 =item *
 
-Toby Inkster <tobyink@cpan.org>
+Justin Hunter <justin.d.hunter@gmail.com>
+
+=item *
+
+Dave Rolsky <autarch@urth.org>
 
 =item *
 
 Tomas Doran <bobtfish@bobtfish.net>
+
+=item *
+
+Graham Knop <haarg@haarg.org>
+
+=item *
+
+Denis Ibaev <dionys@gmail.com>
 
 =back
 
